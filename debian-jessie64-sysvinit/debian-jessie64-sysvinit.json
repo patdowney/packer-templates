@@ -17,7 +17,7 @@
     }
   ],
   "post-processors": [
-    {
+    [{
       "type": "vagrant",
       "override": {
         "virtualbox": {
@@ -28,13 +28,14 @@
     {
         "type": "atlas",
         "token": "{{user `atlas_token`}}",
-        "artifact": "patdowney/debian-jessie64-sysvinit",
+        "only": ["virtualbox-iso"],
+        "artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
         "artifact_type": "vagrant.box",
         "metadata": {
           "provider": "virtualbox",
           "created_at": "{{timestamp}}"
         }
-      }
+      }]
   ],
   "builders": [
     {
